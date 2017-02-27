@@ -1,5 +1,5 @@
 (set-env! :source-paths   #{"src"}
-          :resource-paths   #{"src"})
+          :resource-paths #{"src"})
 
 (task-options!
  push {:repo-map {:url "https://clojars.org/repo/"}}
