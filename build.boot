@@ -3,7 +3,7 @@
           :dependencies '[[adzerk/boot-test "1.2.0" :scope "test"]
                           [org.clojure/data.fressian "0.2.1"]
                           [clj-time "0.13.0"]
-                          [io.replikativ/incognito "0.2.1"]])
+                          [io.replikativ/konserve "0.4.8"]])
 
 (require '[adzerk.boot-test :refer :all])
 
