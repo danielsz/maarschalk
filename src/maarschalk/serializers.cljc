@@ -42,4 +42,4 @@
            (extend-protocol ankha/IInspect
              goog.date.DateTime
              (-inspect [this]
-               (ankha/literal "maarschalk/joda-inst" (f/unparse (f/formatters :date) this))))))
+               (ankha/literal "maarschalk/joda-inst" (f/unparse (f/formatters :date-time) this))))))
