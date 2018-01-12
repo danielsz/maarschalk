@@ -15,14 +15,16 @@
      (-deserialize [_ read-handlers bytes]
        (fress/read bytes
                    :handlers (-> (merge fress/clojure-read-handlers
-                                        {m/joda-tag m/joda-reader}
+                                        {m/joda-tag m/joda-reader
+                                         m/instant-tag m/instant-reader}
                                         (incognito-read-handlers read-handlers))
                                  fress/associative-lookup)))
 
      (-serialize [_ bytes write-handlers val]
        (let [w (fress/create-writer bytes :handlers (-> (merge
                                                          fress/clojure-write-handlers
-                                                         {org.joda.time.DateTime {m/joda-tag m/joda-writer}}
+                                                         {org.joda.time.DateTime {m/joda-tag m/joda-writer}
+                                                          java.time.Instant {m/instant-tag m/instant-writer}}
                                                          (incognito-write-handlers write-handlers))
                                                         fress/associative-lookup
                                                         fress/inheritance-lookup))]
