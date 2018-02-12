@@ -5,7 +5,8 @@
                        [ankha.core :as ankha]]))
   #?(:clj (:import [org.joda.time DateTime]
                    [java.time Instant]
-                   [java.io Writer])))
+                   [java.io Writer]))
+  #?(:cljs (:import [goog.date DateTime])))
 
 (defn- joda-instant->reader-str [d]
   (str "#maarschalk/joda-inst \"" (f/unparse (f/formatters :date-time) d) \"))
@@ -15,7 +16,7 @@
 
 (defn reader-str->java8-instant [s]
   #?(:clj (Instant/parse s)
-     :cljs (coerce/from-string s)))
+     :cljs (.fromRfc822String DateTime s)))
 
 #?(:clj (do
           (defmethod print-dup org.joda.time.DateTime [^DateTime d ^Writer out]

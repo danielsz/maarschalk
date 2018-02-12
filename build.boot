@@ -26,6 +26,9 @@
    (build)
    (push)))
 
+(deftask dev-checkout []
+  (comp (watch) (build)))
+
 (deftask run-test
   []
   (comp
