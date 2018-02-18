@@ -12,7 +12,7 @@
 (task-options!
  push {:repo-map {:url "https://clojars.org/repo/"}}
  pom {:project 'org.danielsz/maarschalk
-      :version "0.1.2-SNAPSHOT"
+      :version "0.1.2"
       :scm {:name "git"
             :url "https://github.com/danielsz/maarschalk"}})
 
