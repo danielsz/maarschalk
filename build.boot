@@ -5,7 +5,7 @@
                           [clj-time "0.13.0"]
                           [com.andrewmcveigh/cljs-time "0.5.1"]
                           [io.replikativ/konserve "0.4.10"]
-                          [ankha "0.1.5.1-64423e" :exclusions [com.cemerick/piggieback com.cemerick/austin]]])
+                          [ankha "0.1.5.1-64423e" :exclusions [com.cemerick/piggieback com.cemerick/austin org.clojure/tools.reader]]])
 
 (require '[adzerk.boot-test :refer :all])
 

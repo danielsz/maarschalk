@@ -1,0 +1,21 @@
+{:pom
+ {:group-id "org.danielsz",
+  :artifact-id "maarschalk",
+  :version "1.0.0",
+  :name "maarschalk"},
+ :packaging
+ {:uberjar
+  {:enabled false,
+   :main-class "main.core",
+   :remote-repository
+   {:id "ssh-repository",
+    :url "scpexe://user@domain:/home/.m2/repository"}},
+  :jar
+  {:enabled true,
+   :remote-repository
+   {:id "clojars", :url "https://clojars.org/repo"}}},
+ :cljs
+ {:enabled false,
+  :main-class "main.core",
+  :compiler-opts "cljsc_opts.edn",
+  :tools-deps-alias :cljs}}
