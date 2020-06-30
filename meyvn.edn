@@ -3,6 +3,7 @@
   :artifact-id "maarschalk",
   :version "0.1.4",
   :name "Maarschalk - a serialization library for Clojure"},
+ :build-properties {:project-build-sourceEncoding "UTF-8"}
  :packaging
  {:uberjar
   {:enabled false,
