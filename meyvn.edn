@@ -1,8 +1,8 @@
 {:pom
  {:group-id "org.danielsz",
   :artifact-id "maarschalk",
-  :version "1.0.0",
-  :name "maarschalk"},
+  :version "0.1.4",
+  :name "Maarschalk - a serialization library for Clojure"},
  :packaging
  {:uberjar
   {:enabled false,

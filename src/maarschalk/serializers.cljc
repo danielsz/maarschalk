@@ -5,7 +5,8 @@
                        [ankha.core :as ankha]]))
   #?(:clj (:import [org.joda.time DateTime]
                    [java.time Instant]
-                   [java.io Writer]))
+                   [java.io Writer]
+                   [org.bson.types ObjectId]))
   #?(:cljs (:import [goog.date DateTime])))
 
 (defn- joda-instant->reader-str [d]
@@ -13,6 +14,10 @@
 
 (defn reader-str->joda-instant [s]
   (f/parse (f/formatters :date-time) s))
+
+(defn reader-str->mongo-object-id [s]
+  #?(:clj (ObjectId. s)
+     :cljs s))
 
 (defn reader-str->java8-instant [s]
   #?(:clj (Instant/parse s)
@@ -29,12 +34,19 @@
             (.write out (format "#maarschalk/java8-inst \"%s\"" d)))
 
           (defmethod print-method java.time.Instant [^Instant d ^Writer out]
-            (.write out (format "#maarschalk/java8-inst \"%s\"" d)))))
+            (.write out (format "#maarschalk/java8-inst \"%s\"" d)))
+
+          (defmethod print-dup org.bson.types.ObjectId [^ObjectId d ^Writer out]
+            (.write out (format "#maarschalk/mongo-object-id \"%s\"" d)))
+
+          (defmethod print-method org.bson.types.ObjectId [^ObjectId d ^Writer out]
+            (.write out (format "#maarschalk/mongo-object-id \"%s\"" d)))))
 
 #?(:cljs (do
            (cljs.reader/register-tag-parser! 'maarschalk/joda-inst reader-str->joda-instant)
            (cljs.reader/register-tag-parser! 'maarschalk/java8-inst reader-str->java8-instant)
-
+           (cljs.reader/register-tag-parser! 'maarschalk/mongo-object-id reader-str->mongo-object-id)
+           
            (extend-protocol IPrintWithWriter
              goog.date.DateTime
              (-pr-writer [d out opts]
