@@ -1,7 +1,7 @@
 {:pom
  {:group-id "org.danielsz",
   :artifact-id "maarschalk",
-  :version "0.1.4",
+  :version "0.1.5",
   :name "Maarschalk - a serialization library for Clojure"},
  :build-properties {:project-build-sourceEncoding "UTF-8"}
  :packaging
@@ -12,11 +12,10 @@
    {:id "ssh-repository",
     :url "scpexe://user@domain:/home/.m2/repository"}},
   :jar
-  {:enabled true,
-   :remote-repository
-   {:id "clojars", :url "https://clojars.org/repo"}}},
+  {:enabled true}},
  :cljs
  {:enabled false,
   :main-class "main.core",
   :compiler-opts "cljsc_opts.edn",
-  :tools-deps-alias :cljs}}
+  :tools-deps-alias :cljs}
+ :distribution-management {:id "clojars", :url "https://clojars.org/repo"}}

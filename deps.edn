@@ -3,6 +3,4 @@
         clj-time {:mvn/version "0.13.0"}
         org.mongodb/mongodb-driver {:mvn/version "3.9.1"}
         com.andrewmcveigh/cljs-time {:mvn/version "0.5.1"}
-        io.replikativ/konserve {:mvn/version "0.4.10"}
-        ankha {:mvn/version "0.1.5.1-64423e"
-               :exclusions [com.cemerick/piggieback com.cemerick/austin org.clojure/tools.reader]}}}
+        io.replikativ/konserve {:mvn/version "0.4.10"}}}

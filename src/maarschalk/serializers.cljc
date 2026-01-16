@@ -1,8 +1,6 @@
 (ns maarschalk.serializers
   (:require [#?(:clj clj-time.format :cljs cljs-time.format) :as f]
-            #?@(:cljs [[cljs.reader :as reader]
-                       [cljs-time.coerce :as coerce]
-                       [ankha.core :as ankha]]))
+            #?@(:cljs [[cljs.reader :as reader]]))
   #?(:clj (:import [org.joda.time DateTime]
                    [java.time Instant]
                    [java.io Writer]
@@ -50,9 +48,4 @@
            (extend-protocol IPrintWithWriter
              goog.date.DateTime
              (-pr-writer [d out opts]
-               (-write out (joda-instant->reader-str d))))
-
-           (extend-protocol ankha/IInspect
-             goog.date.DateTime
-             (-inspect [this]
-               (ankha/literal "maarschalk/joda-inst" (f/unparse (f/formatters :date-time) this))))))
+               (-write out (joda-instant->reader-str d))))))
